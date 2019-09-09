@@ -265,14 +265,14 @@ end
 
 def player_with_longest_name
   longest_name = ""
-  game_hash.each_pair { |key, value|
-    value[:players].each { |player|
-      if player.keys[0].size > longest_name.size
-        longest_name = player.keys[0]
-      end
-     }
-   }
-   longest_name
+game_hash.each_pair do |key, value|
+  value[:players].each do |player|
+    if player.keys[0].size > longest_name.size
+      longest_name = player.keys[0]
+    end
+  end
+end
+  longest_name
 end
 
 def long_name_steals_a_ton?
