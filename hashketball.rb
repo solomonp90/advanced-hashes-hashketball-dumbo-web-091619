@@ -234,11 +234,11 @@ def most_points_scored(stat_to_find = :points)
   mvp = ''
   max_score = 0
   game_hash.each_value do |teams|
-    teams[:players].each do |player|
-       player.each_value do |stats|
+    teams[:players].each do |plyr|
+       plyr.each_value do |stats|
         if stats[stat_to_find] > max_score
           max_score = stats[stat_to_find]
-          mvp = player.keys[0]
+          mvp = plyr.keys[0]
         end
       end
     end
@@ -249,8 +249,8 @@ end
 def winning_team
   home_team_score = 0
   away_team_score = 0
-game_hash[:home][:players].each do |player|
-  player.each_value do |stats|
+game_hash[:home][:players].each do |plyr|
+  plyr.each_value do |stats|
     home_team_score += stats[:points]
   end
 end
