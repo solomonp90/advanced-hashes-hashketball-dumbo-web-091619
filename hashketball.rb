@@ -249,20 +249,16 @@ end
 def winning_team
   home_team_score = 0
   away_team_score = 0
-  game_hash[:home][:players].each { |player|
-    player.each_value { |stats|
-      home_team_score += stats[:points]
-      }
-    }
-
-
-
-
-  game_hash[:away][:players].each { |player|
-    player.each_value { |stats|
-      away_team_score += stats[:points]
-      }
-    }
+game_hash[:home][:players].each do |player|
+  player.each_value do |stats|
+    home_team_score += stats[:points]
+  end
+end
+game_hash[:away][:players].each do |player|
+  player.each_value do |stats|
+    away_team_score += stats[:points]
+  end
+end
 
 p home_team_score > away_team_score ? game_hash[:home][:team_name] : game_hash[:away][:team_name]
 end
