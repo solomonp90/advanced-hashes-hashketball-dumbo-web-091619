@@ -247,28 +247,28 @@ def most_points_scored(stat_to_find = :points)
 end
 
 def winning_team
-  home_team_score = 0
-  away_team_score = 0
+  home_score = 0
+  away_score = 0
 game_hash[:home][:players].each do |plyr|
   plyr.each_value do |stats|
-    home_team_score += stats[:points]
+    home_score += stats[:points]
   end
 end
-game_hash[:away][:players].each do |player|
-  player.each_value do |stats|
-    away_team_score += stats[:points]
+game_hash[:away][:players].each do |plyr|
+  plyr.each_value do |stats|
+    away_score += stats[:points]
   end
 end
 
-p home_team_score > away_team_score ? game_hash[:home][:team_name] : game_hash[:away][:team_name]
+p home_score > away_score ? game_hash[:home][:team_name] : game_hash[:away][:team_name]
 end
 
 def player_with_longest_name
   longest_name = ""
-game_hash.each_pair do |key, value|
-  value[:players].each do |player|
-    if player.keys[0].size > longest_name.size
-      longest_name = player.keys[0]
+game_hash.each_pair do |locale,team_data|
+  team_data[:players].each do |plyr|
+    if plyr.keys[0].size > longest_name.size
+      longest_name = plyr.keys[0]
     end
   end
 end
